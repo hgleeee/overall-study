@@ -27,7 +27,7 @@ person.setName("lee");
 
 - 즉, 객체는 대부분 일회성이고, 메모리에 오랫동안 남아있는 경우는 드물다는 것이다. 그렇기 때문에 객체의 생존 기간에 따라 물리적인 Heap 영역을 나누게 되었고 Young, Old 총 2가지 영역으로 설계되었다.
 
-<p align="center"><img src="./images/gc_flow.png" width="600"></p>
+<p align="center"><img src="./images/gc_flow.png" width="400"></p>
 
 #### Young 영역
 - 새롭게 생성된 객체가 할당(Allocation)되는 영역
@@ -45,7 +45,7 @@ person.setName("lee");
 - 이러한 경우를 대비하여 Old 영역에는 512 bytes의 덩어리(Chunk)로 되어있는 카드 테이블(Card Table)이 존재한다.
 
 ### 카드 테이블(Card Table)
-<p align="center"><img src="./images/card_table.png" width="600"></p>
+<p align="center"><img src="./images/card_table.png" width="400"></p>
 
 - 카드 테이블에는 Old 영역에 있는 객체가 Young 영역의 객체를 참조할 때마다 그에 대한 정보가 표시된다.
 - 이 카드 테이블이 도입된 이유는 Young 영역에서 가비지 컬렉션이 실행될 때 모든 Old 영역에 존재하는 객체를 검사하여 참조되는 Young 영역의 객체가 어떤것인지 식별하는 과정은 매우 비효율적이기 때문이다.
@@ -162,7 +162,7 @@ java -XX:+UseConcMarkSweepGC -jar Application.java
 - 물론 이를 disable 하는 옵션이 있지만, CMS GC는 Java9 버전부터 deprecated 되었고 결국 Java14 에서는 사용이 중지되었다.
 
 ### G1(Garbage First) GC
-<p align="center"><img src="./images/g1_gc.png" width="600"></p>
+<p align="center"><img src="./images/g1_gc.png" width="400"></p>
 
 - G1(Garbage First) GC는 장기적으로 많은 문제를 일으킬 수 있는 CMS GC를 대체하기 위해 개발되었고, Java7부터 지원되기 시작했다.
 - 기존의 GC 알고리즘에서는 Heap 영역을 물리적으로 Young 영역(Eden 영역 1개와 Survivor 영역 2개)과 Old 영역으로 나누어 사용하였다.
