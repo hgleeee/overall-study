@@ -79,6 +79,7 @@
 
 ### 1. 증가 경로 탐색
 <p align="center"><img src="../images/ford_fulkerson_2.png" width="300"></p>
+
 - S → A → E → T 경로를 확인하였다.
 - 경로를 찾는 법칙은 존재하지 않는다. (즉 S → B → E → T도 되고, S → C → F → T도 가능하다)
   - 단, 경로를 찾을 때 반드시 경로는 반드시 여유 용량이 남아 있어야 한다. (c(a, b) - f(a, b) > 0)
