@@ -75,10 +75,10 @@
 5. 더 이상 잔여 용량이 남은 경로가 존재하지 않을 때까지 반복한다.
 
 ## 포드-풀커슨
-<p align="center"><img src="../images/fold_fulkerson_1.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_1.png" width="300"></p>
 
 ### 1. 증가 경로 탐색
-<p align="center"><img src="../images/fold_fulkerson_2.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_2.png" width="300"></p>
 - S → A → E → T 경로를 확인하였다.
 - 경로를 찾는 법칙은 존재하지 않는다. (즉 S → B → E → T도 되고, S → C → F → T도 가능하다)
   - 단, 경로를 찾을 때 반드시 경로는 반드시 여유 용량이 남아 있어야 한다. (c(a, b) - f(a, b) > 0)
@@ -86,34 +86,34 @@
 - 경로를 찾았다의 조건은 Source → Sink까지 도달해야 하며, 경로상에 여유 용량이 있어야 한다.
 
 ### 2. 찾아낸 경로에 보낼 수 있는 최대 flow 탐색
-<p align="center"><img src="../images/fold_fulkerson_3.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_3.png" width="300"></p>
 
 - 경로에서 보낼 수 있는 최대 flow는 각각의 구간에 남은 capacity의 최소값(min)이다.
 - S → A → E → T 에서 capacity의 min 값은 3이다.
 
 ### 3. 찾아낸 경로에, 최대 flow을 흘려보낸다.
-<p align="center"><img src="../images/fold_fulkerson_4.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_4.png" width="300"></p>
 
 - S → A → E → T 경로에 2번 과정에서 구한 3만큼의 flow를 흘려보낸다.
 - 1번 ~ 3번 과정을 반복한다. 종료 조건은 증가경로를 더 이상 찾지 못하는 경우이다.
 
-<p align="center"><img src="../images/fold_fulkerson_5.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_5.png" width="300"></p>
 
 - S → B → E → T 경로를 찾고, 최대 flow가 2인 것을 구한 후 해당 경로에 2만큼 흘려보낸다.
 
-<p align="center"><img src="../images/fold_fulkerson_6.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_6.png" width="300"></p>
 
 - S → C → F → T 경로를 찾고, 최대 flow가 4인 것을 구한 후 해당 경로에 4만큼 흘려보낸다.
 - 증가 경로를 더 이상 찾을 수 없으므로, 여기까지 얻은 total 유량은 9가 된다.
 
-<p align="center"><img src="../images/fold_fulkerson_7.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_7.png" width="300"></p>
 
-<p align="center"><img src="../images/fold_fulkerson_8.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_8.png" width="300"></p>
 
 - 하지만 위의 그림대로라면 total 유량은 10이 나온다.
 
 ### 4. 실제 정답과 오답 비교
-<p align="center"><img src="../images/fold_fulkerson_9.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_9.png" width="300"></p>
 
 - 실제 정답과, 오답을 비교해보면
   - S → A 로 흐르는 3의 유량이 A → E 로 전부 3으로 흐르는 것이 아닌, A → D로 1이 흐르고 A → E 로 2가 흐름을 알 수 있다.
@@ -125,14 +125,14 @@
   - 결국 네트워크 유량의 포드 풀커슨 알고리즘과, 에드몬드 카프 알고리즘의 핵심은 이 가상의 간선(역간선)의 존재를 이용하는 것이다.
 - 역간선이 있는 상태에서, 1 → 3 과정을 다시 반복한다.
 
-<p align="center"><img src="../images/fold_fulkerson_10.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_10.png" width="300"></p>
 
 - 역간선이 있다면 다음과 같은 증가 경로를 찾을 수 있다.
 
-<p align="center"><img src="../images/fold_fulkerson_11.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_11.png" width="300"></p>
 
 - 증가경로: S → C → F → E → A → D → T
-<p align="center"><img src="../images/fold_fulkerson_12.png" width="300"></p>
+<p align="center"><img src="../images/ford_fulkerson_12.png" width="300"></p>
 
 - 증가경로를 더 이상 찾을 수 없으므로, T 까지 도달한 total 유량은 10이 된다.
 
