@@ -16,7 +16,7 @@
 ### 갱신 이상 (Update Anomaly)
 - 테이블의 특정 데이터를 업데이트했는데 정상적으로 변경되지 않은 경우, 그리고 너무 많은 행을 업데이트하는 것
 
-<p align="center"><img src="../images/db_update_anomaly.png" width="600"></p>
+<p align="center"><img src="../images/db_update_anomaly.PNG" width="600"></p>
 
 - 경영학과의 학생이 100명이라고 가정하고 경영학과의 학과장이 이름을 개명해서 학과장명을 변경해야 하는 경우를 예로 들어보자.
 - 변경되지 않은 행이 한 개라도 존재하면, 데이터가 상이한 문제가 발생하며, 학생이 1000명이라면, 1000개의 데이터를 변경해야 하는 비효율적인 문제가 발생합니다.
@@ -35,33 +35,33 @@
 
 ### 1차 정규화
 - 1차 정규형은 각 로우마다 컬럼의 값이 1개씩만 있어야 한다. 이를 컬럼이 원자값(atomic value)을 갖는다고 한다.
-<p align="center"><img src="../images/db_1nf.gif" width="500"></p>
+<p align="center"><img src="../images/db_1nf.gif" width="700"></p>
 
 - 위와 같은 예시에서, Adam의 Subject가 Biology, Maths로 두 개를 갖기 때문에 1차 정규형을 만족하지 못한다.
-<p align="center"><img src="../images/db_1nf_2.gif" width="500"></p>
+<p align="center"><img src="../images/db_1nf_2.gif" width="700"></p>
 
 - 위와 같이 표현하려면 한 개의 로우를 더 만들게 되고 그만큼 데이터 redundancy는 증가한다. 데이터의 논리적 구성을 위해 이 부분을 희생하는 것으로 볼 수 있다.
 
 ### 2차 정규화
 - 2차 정규형은 모든 컬럼이 완전 함수적 종속을 만족하는 것이다.
 - 이는 다르게 말하면, 특정 컬럼에만 종속된 컬럼(부분적 종속)이 없어야 한다는 것이다.
-<p align="center"><img src="../images/db_2nf.gif" width="500"></p>
+<p align="center"><img src="../images/db_2nf.gif" width="700"></p>
 
 - 위에서 들었던 예시의 경우 기본 키는 (Student, Subject)에 해당되고 이 두 필드값을 합쳐야 한 로우를 구분할 수 있다.
 - 그런데 Age 컬럼의 경우 이 기본키 중에서 Student에만 종속적이다. 따라서 Age가 두 번 들어가는 것은 불필요한 것으로 생각할 수 있다.
-<p align="center"><img src="../images/db_2nf_2.gif" width="500"></p>
+<p align="center"><img src="../images/db_2nf_2.gif" width="700"></p>
 
 - 이를 해결하기 위해 테이블을 쪼개야 한다. 그렇게 되었을 때 두 테이블 모두 2차 정규형을 만족하게 된다.
 - 하지만, 이보다 조금 더 복잡한 테이블의 경우 갱신 이상을 겪기도 한다.
 
 ### 3차 정규화
-<p align="center"><img src="../images/db_3nf.gif" width="500"></p>
+<p align="center"><img src="../images/db_3nf.gif" width="700"></p>
 
 - 위와 같은 데이터 구성을 생각해보았을 때, Student_id가 기본키이고 기본키가 하나이므로 2차 정규형을 만족하는 것으로 볼 수 있다.
 - 하지만 이 데이터의 Zip 컬럼을 알면 Street, City, State를 결정할 수 있고, 또한 여러 명의 학생들이 같은 Zip 컬럼값을 갖는 경우 Street, City, State, Zip에서 중복된 데이터가 생길 가능성이 있다.
 - 3차 정규형은 기본키를 제외한 속성들 간의 이행적 함수 종속이 없는 것이다. 기본키 이외의 다른 컬럼이 그 외 다른 컬럼을 결정할 수 없다.
 
-<p align="center"><img src="../images/db_3nf_2.gif" width="500"></p>
+<p align="center"><img src="../images/db_3nf_2.gif" width="700"></p>
 
 - 3차 정규화는 위와 같은 방법으로 테이블을 분리함으로써 해결할 수 있는데, 이를 통해 데이터가 논리적인 단위(학생, 주소)로 분리될 수 있고, 데이터의 redundancy도 줄었음을 알 수 있다.
 
