@@ -14,7 +14,7 @@
 
 ## 종류
 - 슈퍼키, 후보키, 기본키, 대체키, 외래키가 있다.
-<p align="center"><img src="../db_key.png" width="500"></p>
+<p align="center"><img src="../images/db_key.png" width="500"></p>
 
 #### 1) 슈퍼키 (Super Key)
 > 유일성 O, 최소성 X
