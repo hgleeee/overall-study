@@ -60,7 +60,7 @@
 
 ### Garbage Collector
 - Heap 영역에서 참조되지 않는 오브젝트를 제거한다.
-- 더 많은 정보는 GC in Java[https://github.com/hgleeee/overall-study/blob/main/GC%20in%20Java.md] 에서 참조하자.
+- 더 많은 정보는 [GC in Java](https://github.com/hgleeee/overall-study/blob/main/GC%20in%20Java.md) 에서 참조하자.
 
 ### Runtime Data Areas
 - OS(운영체제)로 부터 JRE가 할당받은 메모리 영역이다. 자바 어플리케이션을 실행하는 필요한 데이터를 담는다.
