@@ -127,7 +127,7 @@ com.user.UserAdmin.addUser(Ljava/lang/String;)V
 - 물론 클래스(.class) 파일 자체는 바이너리 파일이라 이해하기 어렵기에 JVM에 함께 제공되는 역어셈블러(disaasembler)를 이용해서 분석한다.
   - 라이브러리 업데이트 하기 전 add() 코드를 javap -c 명령어로 역어셈블한 결과물은 다음과 같다.
 
-///java
+```java
 /*
  // 라이브러리 업데이트 전 add 코드
   public void add(String userName) {  
