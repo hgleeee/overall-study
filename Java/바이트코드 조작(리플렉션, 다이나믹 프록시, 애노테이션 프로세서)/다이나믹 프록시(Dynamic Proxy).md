@@ -28,7 +28,7 @@ public interface BookRepository extends JpaRepository<Book, Integer>{
 ```
 
 ## 프록시 패턴
-<p align="center"><img src="../images/proxy_pattern.png" width="700"></p>
+<p align="center"><img src="../../images/proxy_pattern.png" width="700"></p>
 
 - Proxy는 '대리인'이라는 의미를 가진다. 개발에서 사용하는 Proxy 객체는 클라이언트-서버 등의 관계에서 중간에 끼어 대리인 역할을 하는 객체라고 생각하면 된다.
 - 프록시와 실제 객체가 공유하는 인터페이스가 있고, 클라이언트는 인터페이스를 통해 프록시를 사용한다.
@@ -64,7 +64,7 @@ public class BookServiceProxy implements BookService {
   - 프록시 객체를 기존 객체를 상속받아 하나하나 직접 만드는게 아니라, 런타임 시점에 [클래스 정보 Object.class]를 이용하여 어노테이션, 메서드에 따라 동적으로 다른 메서드 동작을 실행하도록 프록시를 만들 수 있다. 
 
 ## 다이나믹 프록시 특성
-<p align="center"><img src="../images/dynamic_proxy_1.png" width="700"></p>
+<p align="center"><img src="../../images/dynamic_proxy_1.png" width="700"></p>
 
 - 실제 객체와 같은 인터페이스를 사용하는 프록시 객체를 만든다.
 - 자바 API로는 실제 객체를 바로 상속받아서 조작하는 기능을 제공하지 않는다.
@@ -72,7 +72,7 @@ public class BookServiceProxy implements BookService {
 - 개발자는 리플렉션 Class<T>를 쉽게 조작하기 위해서 Java API에 있는 InvocationHandler 객체의 invoke() 메서드만 오버라이딩하여 조작하고 싶은 내용을 작성하면 된다.
 - 이렇게 프록시 객체를 만들면, 특정 메서드나 @어노테이션 값에 따라 동적으로 동작이 달라지는 프록시를 만들 수 있다. => 다이나믹 프록시
 
-<p align="center"><img src="../images/dynamic_proxy_2.png" width="700"></p>
+<p align="center"><img src="../../images/dynamic_proxy_2.png" width="700"></p>
 
 - Proxy 객체의 IH(Invoke Handler)만 개발자가 구현하여 편하게 사용할 수 있는 API를 제공해준다.
 
@@ -120,7 +120,7 @@ if (method.getName().equals("rent")) {
 - Dynamic Proxy는 Invocation Handler를 상속받아서 실체를 구현하게 되는데, 이 과정에서 특정 객체를 통으로 Reflection을 사용하는 방식이라서 성능이 조금 떨어진다.
 
 ## Spring AOP와 프록시
-<p align="center"><img src="../images/spring_aop_process.png" width="600"></p>
+<p align="center"><img src="../../images/spring_aop_process.png" width="600"></p>
 
 - 하지만 위와 같이 직접 동적 프록시를 만드는 것은 코드도 상당히 복잡해지고 구현하기도 어렵다.
 - 그래서 스프링에서는 리플렉션 라이브러리(CGlib)를 이용하여 위와 같은 복잡한 구조를 추상화된 인터페이스로 포장해서 제공해주는데, 이것이 바로 스프링 AOP이다.
@@ -132,7 +132,7 @@ if (method.getName().equals("rent")) {
 - 클래스 프록시가 필요하다면 직접 리플렉션으로 구현하거나 아래와 같은 리플렉션 라이브러리들을 사용하면 된다.
 - 참고로 타겟 객체의 상속을 이용해서 프록시를 만드는 방법을 Subclass 프록시라고도 한다.
 
-<p align="center"><img src="../images/cglib_proxy.png" width="600"></p>
+<p align="center"><img src="../../images/cglib_proxy.png" width="600"></p>
 
 ### CGlib ( https://github.com/cglib/cglib/wiki )
 - CGlib는 바이트코드를 조작하여 프록시 객체를 생성해주는 코드 생성(Code gen)라이브러리이다.
