@@ -56,7 +56,7 @@ public class App {
     }
 }
 ```
-<p align="center"><img src="../images/reflection_result.png" width="600"></p>
+<p align="center"><img src="../../images/reflection_result.png" width="600"></p>
 
 - 이렇게 해당 클래스의 정보를 얻거나, 컴파일 이후 런타임에 동적으로 인스턴스를 만들 수 있다.
 
