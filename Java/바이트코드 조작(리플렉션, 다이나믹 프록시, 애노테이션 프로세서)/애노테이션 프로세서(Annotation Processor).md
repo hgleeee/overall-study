@@ -31,7 +31,7 @@
 - 애노테이션 기반으로 자주 사용하는 코드를 대신 생성해주는 자바 오픈소스 라이브러리이다.
 - 현재 자바에서 가장 많이 쓰는 라이브러리로, @Getter @Setter @Builder 등의 전용 어노테이션과 어노테이션 프로세서 코드(AbstractProcessor)를 제공한다.
 
-<p align="center"><img src="../images/lombok.png" width="600"></p>
+<p align="center"><img src="../../images/lombok.png" width="600"></p>
 
 - 애노테이션 프로세서는 Javac(자바 컴파일러)에 포함되어 있는 프로그램이다.
  
@@ -41,7 +41,7 @@
 - 애노테이션들로 적은 정보를 바탕으로 컴파일 시점에 [애노테이션 프로세서]를 이용하여 소스코드의 AST(abstract syntax tree)를 조작한다.
   - 이를 이용해서 마치 코드가 바뀐 것처럼 동작하게 만든다.
 
-<p align="center"><img src="../images/lombok_ast.png" width="600"></p>
+<p align="center"><img src="../../images/lombok_ast.png" width="600"></p>
 > AST객체. javac(컴파일러)에서는 내부 메서드를 이용해서 AST를 만든다.
 
 - 다만 이는 자바에서 공식적으로 제공하는 참조만 가능한 객체(TypeElement 와 RoundEnvironment)를 하위타입으로 강제 캐스팅하여 javac가 사용하는 메서드를 사용하여 AST를 조작한다.
