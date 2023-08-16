@@ -12,7 +12,7 @@
 - 하지만 그럼에도 불구하고 이러한 특성을 갖는 이유는 쓰기 작업을 희생해서라도 빠르게 읽기 작업을 처리하기 위함이다.
   - 읽기 작업이 더욱 우선시되는 이유는 일반적인 온라인 환경에서 읽기와 쓰기의 비율이 8:2, 9:1 정도이기 때문이다.
 
-<p align="center"><img src="../images/db_pk_1.png" width="600"></p>
+<p align="center"><img src="../images/db_pk_1.png" width="800"></p>
 
 
 ### 페이지(Page)란?
@@ -34,7 +34,7 @@
   - 레코드 한 건을 생각하면 50바이트 쯤이야 대수롭지 않지만 레코드 건수가 100만건만 돼도 인덱스의 크기가 190MB나 증가했다. 1000만건이 되면 1.9GB 증가한다.
   - 또한 인덱스가 커질수록 같은 성능을 내기 위해 그만큼의 메모리가 더 필요해지므로 PK는 신중히 선택해야 한다.
 
-<p align="center"><img src="../images/db_pk_2.png" width="700"></p>
+<p align="center"><img src="../images/db_pk_2.png" width="800"></p>
  
 ### 클러스터링 테이블의 저장 방식
 - 클러스터링 테이블이란 클러스터 인덱스를 갖는 테이블이다.
@@ -42,14 +42,14 @@
 - PK가 클러스터 인덱스(Clustered Index)와 동의어라는 부분에서 예측할 수 있듯이, PK는 인덱스와 마찬가지로 별도의 자료구조에서 관리가 된다.
   - PK와 테이블의 저장 방식을 살펴보면 다음과 같은데, 이는 리프 노드에 실제 레코드의 모든 컬럼 값이 저장되어 있다는 점을 제외하면 일반적인 인덱스와 동일하다.
 
-<p align="center"><img src="../images/db_pk_3.png" width="600"></p>
+<p align="center"><img src="../images/db_pk_3.png" width="800"></p>
  
 ### PK와 인덱스의 관계
 - PK가 레코드의 물리적인 저장 위치를 결정하기 때문에, 인덱스는 PK에 의존한다.
   - 그래야 인덱스를 타고 들어와서 PK를 통해 저장된 위치에서 레코드를 읽어올 수 있기 때문이다.
   - 이러한 구조를 그림으로 표현하면 다음과 같다.
 
-<p align="center"><img src="../images/db_pk_4.png" width="700"></p>
+<p align="center"><img src="../images/db_pk_4.png" width="800"></p>
  
 - 인덱스가 PK가 아닌 실제 레코드의 주소를 갖게 할 수도 있다.
   - 하지만 그렇게 구현하면 PK가 변경될 때 데이터 레코드의 주소가 변경되고, 그때마다 모든 인덱스에 저장된 레코드의 주소를 변경해주어야 한다.
@@ -100,7 +100,7 @@
   - 이 말은 PK가 변경되는 경우에 레코드가 저장된 물리적인 위치도 변경되어야 함을 의미한다.
 - 예를 들어 PK가 11번인 employee 정보가 10번 페이지에 저장된 상태라고 하자.
 
-<p align="center"><img src="../images/db_pk_5.png" width="700"></p>
+<p align="center"><img src="../images/db_pk_5.png" width="800"></p>
 
 - 그리고 다음과 같이 PK를 변경하는 쿼리를 실행한다고 하자.
 
@@ -111,7 +111,7 @@ UPDATE employee SET emp_no = 6 WHERE emp_no = 11;
 - PK를 변경하게 되면 PK 값에 따라 레코드가 있어야하는 페이지가 달라질 수 있다.
 - 위의 그림에서 보면 10번 페이지에 있던 데이터가 9번 페이지로 옮겨갈 수 있는 것이다.
 
-<p align="center"><img src="../images/db_pk_6.png" width="700"></p>
+<p align="center"><img src="../images/db_pk_6.png" width="800"></p>
  
 - PK는 물리적인 레코드의 저장 위치를 결정하기 때문에 단순히 값만 변경해서는 안되고, 레코드를 DELETE 한 후에 INSERT 해주어야 한다.
 - 따라서 2번의 디스크 I/O 작업이 필요하고, 인덱스 쪽에도 추가 작업을 유발할 수 있어서 비용이 상당히 크므로 PK는 변하지 않는 값으로 설정하는 것이 중요하다.
